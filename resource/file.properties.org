@@ -1,0 +1,4 @@
+#config
+file_path = ${filepath}
+old_filename = ${old.xls}
+new_filename = ${new.xls}
