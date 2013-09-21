@@ -15,18 +15,14 @@ import java.util.Properties;
  */
 public class XlsDiff {
 	
-//	private static final String old_filename = "C:/Users/naoto/workspace/csvdiff/xls/old_sample.xls";
-//	private static final String new_filename = "C:/Users/naoto/workspace/csvdiff/xls/new_sample.xls";
-//	private static final String file = "C:/Users/naoto/workspace/csvdiff/src/csvdiff/file.properties";
-	
 	public static void main(String[] args){
 		
-		String path = args[0];
-		String file = args[1];
+		//プロパティファイルを引数で渡す
+		String filepath = args[0];
 		//プロパティファイル読み込み
 		Properties config = new Properties();
 		try{
-			InputStream is = new FileInputStream(new File(path+file));
+			InputStream is = new FileInputStream(new File(filepath));
 			config.load(is);
 			
 		}catch (Exception e) {
