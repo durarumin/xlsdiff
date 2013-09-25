@@ -31,8 +31,10 @@ public class XlsDiff {
 		}
 		
 		//fileñºçÏÇÈ
-		String old_filename = config.getProperty("file_path") + config.getProperty("old_filename");
-		String new_filename = config.getProperty("file_path") + config.getProperty("new_filename");
+		String old_filename = config.getProperty("old_filename");
+		System.out.println("old_file:"+old_filename);
+		String new_filename = config.getProperty("new_filename");
+		System.out.println("new_file:"+new_filename);
 		
 		Read o_read = new Read(old_filename);
 		try {
@@ -73,8 +75,10 @@ public class XlsDiff {
 					}else{
 						array.add("row"+i+":"+"column"+j);
 						dflag = 1;
+						System.out.println("row"+i+":"+"column"+j);
 						System.out.println("old:"+o_read.getMap().get(i+":"+j));
 						System.out.println("new:"+n_read.getMap().get(i+":"+j));
+						System.out.println("=========");
 					}
 				}
 			}
@@ -90,11 +94,11 @@ public class XlsDiff {
 			System.out.println("OK");
 			System.exit(dflag);
 		}else{
-			System.out.println("diffing!!");
-			Iterator<String> it = array.iterator();
-			while(it.hasNext()){
-				System.out.println(it.next());
-			}
+			System.out.println("NG!!");
+//			Iterator<String> it = array.iterator();
+//			while(it.hasNext()){
+//				System.out.println(it.next());
+//			}
 			System.exit(dflag);
 		}
 	}

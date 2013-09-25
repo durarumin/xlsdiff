@@ -103,11 +103,11 @@ public class Read {
 			break;
 
 		case Cell.CELL_TYPE_BLANK:
-			str = "blank";
+			str = "";
 			break;
 		
 		default:
-			str = "null";
+			str = null;
 			break;
 		}
 		return str;
