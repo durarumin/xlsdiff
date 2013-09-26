@@ -17,23 +17,16 @@ public class XlsDiff {
 	
 	public static void main(String[] args){
 		
-		//プロパティファイルを引数で渡す
-		String filepath = args[0];
-		//プロパティファイル読み込み
-		Properties config = new Properties();
-		try{
-			InputStream is = new FileInputStream(new File(filepath));
-			config.load(is);
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			return;
+		if(args.length != 2){
+			System.out.println("args <file1> <file2>");
+			System.exit(1);
 		}
 		
-		//file名作る
-		String old_filename = config.getProperty("old_filename");
+		//引数でファイルを指定
+		String old_filename = args[0];
+		String new_filename = args[1];
+		
 		System.out.println("old_file:"+old_filename);
-		String new_filename = config.getProperty("new_filename");
 		System.out.println("new_file:"+new_filename);
 		
 		Read o_read = new Read(old_filename);
