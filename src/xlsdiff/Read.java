@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -83,6 +85,11 @@ public class Read {
 	 */
 	private static String filter(HSSFCell cell){
 		String str;
+		//xxxx-xx-xx‚Ì•¶Žš—ñ‚Í“ú•t‚Æ‚Ý‚È‚·
+		String regex = "^\\d{4}-\\d{1,2}-\\d{1,2}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher match;
+		
 		switch (cell.getCellType()){
 		case Cell.CELL_TYPE_NUMERIC:
 			if(DateUtil.isCellDateFormatted(cell)){
@@ -96,6 +103,11 @@ public class Read {
 
 		case Cell.CELL_TYPE_STRING:
 			str = String.valueOf(cell.getRichStringCellValue());
+			match = p.matcher(str);
+			if(match.find()){
+				str = "xxxx-xx-xx";
+				System.out.println("strings date!");
+			}
 			break;
 
 		case Cell.CELL_TYPE_BOOLEAN:
